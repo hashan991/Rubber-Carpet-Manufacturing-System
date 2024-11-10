@@ -95,7 +95,7 @@ export default function BuyPartView() {
         });
 
         const finalY = doc.autoTable.previous.finalY + 20;
-        doc.text('...............................................', 14, finalY);
+        doc.text('...............................................', 15, finalY);
         doc.setFontSize(12);
         doc.text('Mechanical Inspector', 14, finalY + 10); // Placeholder for position
 
