@@ -194,6 +194,7 @@ export default function SupplierForm() {
                 boxSizing: 'border-box'
               }}
             />
+          
             {errors.address && <p style={{ color: 'red', marginTop: '5px' }}>{errors.address}</p>}
           </div>
           <div style={{ marginBottom: '15px' }}>
