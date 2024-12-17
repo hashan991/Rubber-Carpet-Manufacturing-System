@@ -115,6 +115,24 @@ app.use("/PettyCash", pettytRouter);
 const profitAndLostRouter = require("./routes/accountantroute/profitAndLosts.js");
 app.use("/ProfitAndLost", profitAndLostRouter);
 
+
+
+
+//Deploy
+const path = require("path");
+
+// Serve the React static files
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+// Handle React routing (fallback to index.html)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
+});
+
+
+
+
+
 app.listen(PORT, () => {
   console.log(`Server is up and running on PORT : ${PORT}`);
 });

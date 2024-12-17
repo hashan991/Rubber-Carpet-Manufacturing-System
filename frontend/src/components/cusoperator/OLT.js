@@ -96,6 +96,7 @@ export default function ViewOrderTable() {
             <th style={{ border: '1.5px solid #000000', padding: '8px', backgroundColor: '#C7C7C7' }}>Customer Name</th>
             <th style={{ border: '1.5px solid #000000', padding: '8px', backgroundColor: '#C7C7C7' }}>Order Date</th>
             <th style={{ border: '1.5px solid #000000', padding: '8px', backgroundColor: '#C7C7C7' }}>Contact Number</th>
+            <th style={{ border: '1.5px solid #000000', padding: '8px', backgroundColor: '#C7C7C7' }}>E-mail</th>
             <th style={{ border: '1.5px solid #000000', padding: '8px', backgroundColor: '#C7C7C7' }}>Product Catalog</th>
             <th style={{ border: '1.5px solid #000000', padding: '8px', backgroundColor: '#C7C7C7' }}>Address</th>
             <th style={{ border: '1.5px solid #000000', padding: '8px', backgroundColor: '#C7C7C7' }}>Quantity</th>
@@ -104,53 +105,60 @@ export default function ViewOrderTable() {
           </tr>
         </thead>
         <tbody>
-          {filteredOrders.map((order, index) => (
-            <tr key={order._id}>
-              <td style={{ border: '1.5px solid #000000', padding: '8px' }}>{order.orderNumber || index + 1}</td>
-              <td style={{ border: '1.5px solid #000000', padding: '8px' }}>{order.customerName}</td>
-              <td style={{ border: '1.5px solid #000000', padding: '8px' }}>
-                {new Date(new Date(order.orderDate).getTime() + new Date(order.orderDate).getTimezoneOffset() * 60000).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })}
-              </td>
-              <td style={{ border: '1.5px solid #000000', padding: '8px' }}>{order.contactNumber}</td>
-              <td style={{ border: '1.5px solid #000000', padding: '8px' }}>{order.productCatalog}</td>
-              <td style={{ border: '1.5px solid #000000', padding: '8px' }}>{order.address}</td>
-              <td style={{ border: '1.5px solid #000000', padding: '8px' }}>{order.quantity}</td>
-              
-              <td style={{ border: '1.5px solid #000000', padding: '8px', textAlign: 'center' }}>
-                <button
-                  onClick={() => handleUpdate(order)}
-                  style={{
-                    padding: '6px 10px',
-                    backgroundColor: '#007bff',
-                    color: '#fff',
-                    border: 'none',
-                    borderRadius: '10px',
-                    cursor: 'pointer',
-                    marginRight: '10px',
-                    fontSize: '10px'
-                  }}
-                >
-                  Update
-                </button>
-                <button
-                  onClick={() => handleDelete(order._id)}
-                  style={{
-                    padding: '6px 10px',
-                    backgroundColor: '#dc3545',
-                    color: '#fff',
-                    border: 'none',
-                    borderRadius: '10px',
-                    cursor: 'pointer',
-                    fontSize: '10px',
-                    marginLeft: '10px',
-                  }}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+  {filteredOrders.map((order) => {
+    const orderIndex = salesOrder.findIndex(o => o._id === order._id); // Find the original index
+    const orderNumber = 101 + orderIndex; // Calculate the order number based on the original index
+
+    return (
+      <tr key={order._id}>
+        <td style={{ border: '1.5px solid #000000', padding: '8px' }}>{orderNumber}</td>
+        <td style={{ border: '1.5px solid #000000', padding: '8px' }}>{order.customerName}</td>
+        <td style={{ border: '1.5px solid #000000', padding: '8px' }}>
+          {new Date(new Date(order.orderDate).getTime() + new Date(order.orderDate).getTimezoneOffset() * 60000).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })}
+        </td>
+        <td style={{ border: '1.5px solid #000000', padding: '8px' }}>{order.contactNumber}</td>
+        <td style={{ border: '1.5px solid #000000', padding: '8px' }}>{order.email}</td>
+        <td style={{ border: '1.5px solid #000000', padding: '8px' }}>{order.productCatalog}</td>
+        <td style={{ border: '1.5px solid #000000', padding: '8px' }}>{order.address}</td>
+        <td style={{ border: '1.5px solid #000000', padding: '8px' }}>{order.quantity}</td>
+        
+        <td style={{ border: '1.5px solid #000000', padding: '8px', textAlign: 'center' }}>
+          <button
+            onClick={() => handleUpdate(order)}
+            style={{
+              padding: '6px 10px',
+              backgroundColor: '#007bff',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '10px',
+              cursor: 'pointer',
+              marginRight: '10px',
+              fontSize: '10px'
+            }}
+          >
+            Update
+          </button>
+          <button
+            onClick={() => handleDelete(order._id)}
+            style={{
+              padding: '6px 10px',
+              backgroundColor: '#dc3545',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '10px',
+              cursor: 'pointer',
+              fontSize: '10px',
+              marginLeft: '10px',
+            }}
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    );
+  })}
+</tbody>
+
       </table>
     </div>
   );

@@ -52,6 +52,9 @@ export default function BuyPartView() {
 
     const downloadPdf = () => { //pdf download
         const doc = new jsPDF();
+        
+        
+
         doc.setFontSize(18);
         doc.text("PRI Rubber Industry", 14, 10);
         doc.setFontSize(15);
@@ -83,7 +86,7 @@ export default function BuyPartView() {
         doc.autoTable({
             head: [tableColumn],
             body: tableRows,
-            startY: 35, // Adjusts where the table starts
+            startY: 40, // Adjusts where the table starts
             headStyles: {
                 fillColor: [0, 0, 255],  // Blue background color for header
                 textColor: [255, 255, 255], // White text color for header
@@ -92,7 +95,7 @@ export default function BuyPartView() {
         });
 
         const finalY = doc.autoTable.previous.finalY + 20;
-        doc.text('...............................................', 14, finalY);
+        doc.text('...............................................', 15, finalY);
         doc.setFontSize(12);
         doc.text('Mechanical Inspector', 14, finalY + 10); // Placeholder for position
 
@@ -138,8 +141,8 @@ export default function BuyPartView() {
                                 <Button
                                     variant="contained"
                                     sx={{
-                                        backgroundColor: "yellow",
-                                        color: "#000",
+                                        backgroundColor: "green",
+                                        color: "#ffffff",
                                         marginTop: "10px",
                                     }}
                                     onClick={handleBuyPar}

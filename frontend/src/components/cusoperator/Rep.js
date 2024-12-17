@@ -8,22 +8,22 @@ import PRIImage from '../../images/PRI.png';
 // Register components to use with Chart.js
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
-const PDFContent = ({ summary, totalSalesByMonth, getBarChartData, getProductQuantityBarChartData }) => {
+const PDFContent = ({ summary, totalSalesByMonth }) => {
   return (
-    <div style={{ padding: '20px 30px', fontFamily: 'Arial, sans-serif', backgroundColor: '#FFFFFF', minHeight: '100vh', width:'90%', border: '3.5px solid black',fontFamily: 'Italic' }}>
+    <div style={{ padding: '20px 30px', fontFamily: 'Arial, sans-serif', backgroundColor: '#FFFFFF', minHeight: '130vh', width:'90%', border: '3.5px solid black',fontFamily: 'Italic' }}>
      
       <p style={{ margin: 0,fontSize: '20px',fontWeight: 'bold' }}>PRI Rubber Industry </p>
-      <p style={{ margin: 0,fontSize: '14px' }}>Colombo 07 </p>
-      <p style={{ margin: 0 ,fontSize: '14px'}}>Sri Lanka </p>
-      <p style={{ margin: 0 ,fontSize: '14px'}}>Tell: +94 xxxxxxxx </p>
-      <p style={{ margin: 0 ,fontSize: '14px'}}>Email:
-      <a href="mailto:malindu113@gmail.com" style={{ textDecoration: 'none', color: 'blue' }}>
-        malindu113@gmail.com
+      <p style={{ margin: 0,fontSize: '15px' }}>Biyagama  </p>
+      <p style={{ margin: 0 ,fontSize: '15px'}}>Sri Lanka </p>
+      <p style={{ margin: 0 ,fontSize: '15px'}}>Tell: +94 xxxxxxxx </p>
+      <p style={{ margin: 0 ,fontSize: '15px'}}>Email:
+      <a href="mailto:PRIrubberindustry@gmail.com" style={{ textDecoration: 'none', color: 'blue' }}>
+      PRIrubberindustry@gmail.com
       </a>
       </p>
     
       <div style={{ marginLeft: '850px' }}>
-      <img src={PRIImage} alt="PRI" style={{ width: '100px', height: '10vh', borderRadius: '10px',marginTop:'-200px' }} />
+      <img src={PRIImage} alt="PRI" style={{ width: '113px', height: '15vh', borderRadius: '10px',marginTop:'-200px' }} />
       </div>
      
       
@@ -32,7 +32,7 @@ const PDFContent = ({ summary, totalSalesByMonth, getBarChartData, getProductQua
         Monthly Income Report (2024)
       </h1>
       
-      <div style={{ marginBottom: '40px',marginLeft: '150px' , textAlign: 'center', backgroundColor: '#E6E6FA', padding: '20px', borderRadius: '26px',width: '65%', }}>
+      <div style={{ marginBottom: '40px',marginLeft: '165px' , textAlign: 'center', backgroundColor: '#EFEFFC', padding: '20px', borderRadius: '20px',width: '65%', }}>
         <h2 style={{ color: '#FF0000', fontSize: '20px',}}>Summary</h2>
         <p style={{ color: '#000000' }}><strong>Total Sales:</strong> Rs {summary.totalSales.toFixed(2)}</p>
         <p style={{ color: '#000000' }}><strong>Total Quantity Sold:</strong> {summary.totalQuantity}</p>
@@ -42,8 +42,8 @@ const PDFContent = ({ summary, totalSalesByMonth, getBarChartData, getProductQua
 
       <div style={{ display: 'flex', flexDirection: 'column', marginBottom: '40px' }}>
         <div style={{ width: '68%', marginTop: '-20px' }}>
-          <h2 style={{ marginBottom: '20px', color: '#FF0000', fontSize: '18px', textAlign: 'center',marginLeft:'290px' }}>Sales Data by Month</h2>
-          <table style={{ width: '100%', borderCollapse: 'collapse', border: '1.5px solid #000000', fontSize: '14px',marginLeft:'150px' }}>
+          <h2 style={{ marginBottom: '20px', color: '#FF0000', fontSize: '18px', textAlign: 'center',marginLeft:'290px' }}>Sales Orders by Month</h2>
+          <table style={{ width: '100%', borderCollapse: 'collapse', border: '1.5px solid #000000', fontSize: '16px',marginLeft:'150px' , backgroundColor: '#EFEFFC'}}>
             <thead>
               <tr style={{ backgroundColor: '#0000FF', color: '#FFFFFF' }}>
                 <th style={{ padding: '10px', border: '1px solid #000000' }}>Month</th>
@@ -63,29 +63,11 @@ const PDFContent = ({ summary, totalSalesByMonth, getBarChartData, getProductQua
           </table>
         </div>
 
-        <div style={{ width: '60%',marginLeft:'170px' }}>
-          <h2 style={{ marginBottom: '-3px', color: '#FF0000', fontSize: '18px', textAlign: 'center',marginLeft:'10px' }}>Monthly Sales Chart</h2>
-          <Bar data={getBarChartData()} options={{
-            responsive: true,
-            plugins: { legend: { position: 'top' }, title: { display: true, text: 'Monthly Total Sales', font: { size: 16, weight: 'bold' }, color: '#000000' }},
-            layout: { padding: { top: 30 }},
-            scales: { x: { ticks: { color: 'rgba(0, 0, 0, 1)' }, grid: { color: 'rgba(0, 0, 0, 0.2)' }},
-                      y: { ticks: { color: 'rgba(0, 0, 0, 1)' }, grid: { color: 'rgba(0, 0, 0, 0.2)' }, beginAtZero: true }},
-          }} />
-        </div>
+        
       </div>
 
-      <div style={{ width: '70%',marginLeft:'110px' }}>
-        <h2 style={{ marginBottom: '-0px', color: '#FF0000', fontSize: '18px', textAlign: 'center' }}>Product Quantity Chart</h2>
-        <Bar data={getProductQuantityBarChartData()} options={{
-            responsive: true,
-            plugins: { legend: { position: 'top' }, title: { display: true, text: 'Product Quantity by Month', font: { size: 16, weight: 'bold' }, color: '#000000' }},
-            layout: { padding: { top: 30 }},
-            scales: { x: { ticks: { color: 'rgba(0, 0, 0, 1)' }, grid: { color: 'rgba(0, 0, 0, 0.2)' }},
-                      y: { ticks: { color: 'rgba(0, 0, 0, 1)' }, grid: { color: 'rgba(0, 0, 0, 0.2)' }, beginAtZero: true }},
-          }} />
-      </div>
-      <div style={{ height: '50px',width: '15%', marginTop: '50px', borderTop: '2.3px dotted black', textAlign: 'left', paddingTop: '10px',fontSize: '14px',fontWeight: 'bold' }}>
+      
+      <div style={{ height: '50px',width: '15%', marginTop: '80px', borderTop: '2.3px dotted black', textAlign: 'left', paddingTop: '10px',fontSize: '14px',fontWeight: 'bold' }}>
       <p style={{ margin: 0 }}>Malindu Nethmina </p>
         <p style={{ margin: 0 }}>Customer Manager </p>
         <p style={{ margin: 0 }}>Date:{new Date().toLocaleDateString()}</p>
@@ -123,63 +105,6 @@ export default function CalTableWithBarChart() {
     date.setMonth(monthNumber);
     return date.toLocaleString('default', { month: 'long' });
   };
-
-  const getBarChartData = () => {
-    const salesByMonth = {};
-    salesOrders.forEach(order => {
-      const month = getMonthName(new Date(order.month).getMonth() + 1);
-      salesByMonth[month] = (salesByMonth[month] || 0) + order.totalSales;
-    });
-
-    return {
-      labels: Object.keys(salesByMonth),
-      datasets: [{
-        label: 'Total Sales',
-        data: Object.values(salesByMonth),
-        backgroundColor: 'rgba(54, 162, 235, 0.6)',
-        borderColor: 'rgba(0, 0, 0, 1)',
-        borderWidth: 1.2,
-      }],
-    };
-  };
-
-  const getProductQuantityBarChartData = () => {
-    const products = [
-      'Industrial Rubber Mats',
-      'Gym Rubber Flooring',
-      'Rubber Runner Mats',
-      'Rubber Playground Mats',
-      'Commercial Rubber Flooring',
-      'Rubber Carpet Tiles'
-    ];
-
-    const months = [...new Set(salesOrders.map(order => getMonthName(new Date(order.month).getMonth() + 1)))];
-
-    const dataByMonth = months.map(month => {
-      const monthlyData = salesOrders.filter(order => getMonthName(new Date(order.month).getMonth() + 1) === month);
-      return products.map(product => {
-        return monthlyData
-          .filter(order => order.product === product)
-          .reduce((sum, order) => sum + order.totalQuantity, 0);
-      });
-    });
-
-    return {
-      labels: months,
-      datasets: products.map((product, index) => ({
-        label: product,
-        data: dataByMonth.map(data => data[index]),
-        backgroundColor: [
-          '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
-        ][index],
-        borderColor: [
-          '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
-        ][index],
-        borderWidth: 1,
-      })),
-    };
-  };
-
   const handleDownload = () => {
     const pdf = new jsPDF();
     const input = document.getElementById('pdfContent');
@@ -226,12 +151,13 @@ export default function CalTableWithBarChart() {
             acc[month].quantity += order.totalQuantity;
             return acc;
           }, {})}
-          getBarChartData={getBarChartData}
-          getProductQuantityBarChartData={getProductQuantityBarChartData}
+          
           
         />
         
       </div>
+
+      <div></div>
 
       {/* Download button visible only on frontend */}
       <button 
