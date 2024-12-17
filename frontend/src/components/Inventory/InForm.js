@@ -138,7 +138,7 @@ export default function ProductForm() {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f7f7f7', padding: '10px' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#000000', padding: '10px' }}>
       <div style={{ maxWidth: '420px', width: '100%', marginRight: '20px' }}>
         <img
           src={pic3} 
