@@ -146,7 +146,7 @@ export default function ProductForm() {
           style={{
             width: '100%',
             height: '77vh',
-            borderRadius: '4px',
+            borderRadius: '5px',
             marginBottom: '1px',
           }}
         />
